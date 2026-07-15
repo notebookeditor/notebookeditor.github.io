@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MiniTube</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #111; color: #fff; margin: 0; }
+    .gallery { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; }
+    .video-card { width: 300px; cursor: pointer; }
+    .video-card img { width: 100%; border-radius: 8px; }
+    .video-card h3 { margin: 8px 0; font-size: 16px; }
+    video { width: 100%; max-height: 80vh; display: none; }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center;">MiniTube</h1>
+  <div class="gallery">
+    <div class="video-card" onclick="playVideo('video1')">
+      <img src="thumb1.jpg" alt="Video 1 Thumbnail">
+      <h3>Sample Video 1</h3>
+      <video id="video1" controls>
+        <source src="video1.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-card" onclick="playVideo('video2')">
+      <img src="thumb2.jpg" alt="Video 2 Thumbnail">
+      <h3>Sample Video 2</h3>
+      <video id="video2" controls>
+        <source src="video2.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <script>
+    function playVideo(id) {
+      // Hide all videos
+      document.querySelectorAll("video").forEach(v => {
+        v.pause();
+        v.style.display = "none";
+      });
+      // Show and play selected video
+      const vid = document.getElementById(id);
+      vid.style.display = "block";
+      vid.play();
+      vid.requestFullscreen(); // Fullscreen mode
+    }
+  </script>
+</body>
+</html>
